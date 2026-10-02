@@ -111,9 +111,9 @@ function trendingLabel(link: QuickLink): string {
         {
           hero.ctaPrimary && (
             <a
-              href={site.social.official}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={site.social.official || listPath(NAVIGATION_CONFIG[0]?.key ?? 'guides', locale)}
+              target={site.social.official ? '_blank' : undefined}
+              rel={site.social.official ? 'noopener noreferrer' : undefined}
               class="btn-primary"
             >
               <Icon name="lucide:play" class="mr-2 h-4 w-4" />
@@ -237,9 +237,9 @@ function trendingLabel(link: QuickLink): string {
           <p class="mx-auto mt-2 max-w-xl text-muted-foreground">{closingCta.description}</p>
           <div class="mt-6 flex justify-center gap-3">
             <a
-              href={site.social.official}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={site.social.official || listPath(NAVIGATION_CONFIG[0]?.key ?? 'guides', locale)}
+              target={site.social.official ? '_blank' : undefined}
+              rel={site.social.official ? 'noopener noreferrer' : undefined}
               class="btn-primary"
             >
               {closingCta.primary}

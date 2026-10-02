@@ -168,16 +168,16 @@
     "closingCta": {
       "title": "Ready to lose a friendship over a slot cabinet?",
       "description": "Bookmark the hub, bring a full pantry, and check back after every patch — the fishipedia and boss guides are re-verified each update.",
-      "primary": "Read Survival 101",
-      "secondary": "Browse all guides"
+      "primary": "Start with the guides",
+      "secondary": "Join the community"
     },
     "hero": {
       "badge": "Unofficial wiki · Game v1.0.9",
       "title": "HowToFish Hub",
       "description": "Survival guides, boss breakdowns, casino math and the full fishipedia for How to Fish — community-tested, with a last-verified date on every page.",
       "videoId": "",
-      "ctaPrimary": { "label": "Start with Survival 101", "href": "/guides/survival-101/" },
-      "ctaSecondary": { "label": "Browse the fishipedia", "href": "/fish/fishipedia-species-database/" }
+      "ctaPrimary": "Browse the guides",
+      "ctaSecondary": "Meet the four bosses"
     },
     "start": {
       "badge": "Quick start",
