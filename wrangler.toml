@@ -16,6 +16,8 @@ compatibility_date = "2026-08-11"
 pages_build_output_dir = "dist"
 
 [vars]
+# Build image version — pnpm 11 requires Node 22.13+.
+NODE_VERSION = "22"
 # Site (must include https:// protocol — Astro validates this as a URL)
 SITE_URL = "https://how-to-fish-game.online"
 # Legacy IndexNow override — new forks generate .indexnow-key automatically.
