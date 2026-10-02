@@ -1,11 +1,11 @@
 {
-  "name": "Anvil Quest Wiki",
-  "short_name": "AQ Wiki",
-  "description": "Complete Anvil Quest wiki with boss guides, codes, and tier lists.",
+  "name": "How to Fish Wiki",
+  "short_name": "HowToFish Hub",
+  "description": "Unofficial fan hub for How to Fish: survival guides, weapon & casino strategy, boss breakdowns, the full fishipedia, and a fix-it desk for known bugs.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#f36716",
+  "theme_color": "#2bd4bd",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

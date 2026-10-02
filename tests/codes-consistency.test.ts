@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { CONTENT_TYPES } from '~/config/navigation';
 
 /**
  * Codes page ↔ homepage highlight consistency (第 23 轮 24h 审计发现①②的门禁半边).
@@ -114,7 +115,9 @@ function bodyTestPassDate(locale: string, body: string): string | undefined {
   return m ? `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}` : undefined;
 }
 
-describe('codes page ↔ home highlights consistency', () => {
+// Codes pages are a fork choice (apply-template categories) — this suite
+// only applies while a codes category is configured.
+describe.skipIf(!CONTENT_TYPES.includes('codes'))('codes page ↔ home highlights consistency', () => {
   for (const locale of LOCALES) {
     it(`${locale}: home badge-list highlights mirror the codes page active set`, () => {
       const active = activeCodes(frontmatterOf(readCodesPage(locale)));

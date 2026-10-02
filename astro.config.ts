@@ -194,7 +194,26 @@ function buildLastmodMap(
   return map;
 }
 
-const siteOrigin = process.env.SITE_URL || 'https://anvil.wiki';
+/**
+ * SITE_URL resolution order: build env var (CI / Cloudflare Pages) →
+ * wrangler.toml [vars] SITE_URL (the documented single source of truth for
+ * Pages env — reading it here keeps a plain local `pnpm build` on the same
+ * absolute URLs as production instead of leaking the demo domain into the
+ * sitemap) → the upstream demo domain (template repo state only).
+ */
+function resolveSiteUrl(): string {
+  if (process.env.SITE_URL) return process.env.SITE_URL;
+  try {
+    const toml = fs.readFileSync(path.resolve('wrangler.toml'), 'utf8');
+    const match = toml.match(/^SITE_URL\s*=\s*"([^"]+)"/m);
+    if (match) return match[1];
+  } catch {
+    // wrangler.toml is optional — fall through to the demo default.
+  }
+  return 'https://anvil.wiki';
+}
+
+const siteOrigin = resolveSiteUrl();
 
 // trailingSlash:'always' makes every generated URL end with "/", but the
 // lookup tables above (lastmodMap / noindexPaths / coverage keys) are built
@@ -277,7 +296,7 @@ function alternatesFor(pagePath: string): Array<{ lang: string; url: string }> |
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://anvil.wiki',
+  site: siteOrigin,
   output: 'static',
   // Astro 7 flipped the default from true to 'jsx', which strips whitespace
   // between adjacent inline elements ("word" + "word" can render joined).

@@ -124,7 +124,9 @@ describe('shortTitle: nav label derivation', () => {
   });
 });
 
-describe('handbook search contract (Pagefind)', () => {
+// The landing/docs-center layer is removed by apply-template on forks —
+// the search contracts below only apply while those components ship.
+describe.skipIf(!fs.existsSync(path.resolve(ROOT, 'src/components/landing/HandbookChapter.astro')))('handbook search contract (Pagefind)', () => {
   const src = (rel: string) => fs.readFileSync(path.resolve(ROOT, rel), 'utf8');
 
   it('HandbookChapter opts chapters into the search index', () => {

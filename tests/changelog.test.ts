@@ -8,7 +8,7 @@
  * v2.4.1–v2.6.2 six-release streak, v2.15.1 cleanup variant, v2.18.1) before
  * the nightly automation finally gated it here (2026-09-12).
  */
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, test } from 'vitest';
@@ -38,7 +38,9 @@ describe('CHANGELOG release contract', () => {
     }
   });
 
-  test('PROJECT_VERSION stays in sync with package.json (version 五处 release checklist, now gated)', () => {
+  // The landing layer (landing-shared.ts) is removed by apply-template on
+  // forks — the version-sync guard only applies while that file ships.
+  test.skipIf(!existsSync(join(root, 'src/config/landing-shared.ts')))('PROJECT_VERSION stays in sync with package.json (version 五处 release checklist, now gated)', () => {
     const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')) as { version: string };
     const shared = readFileSync(join(root, 'src/config/landing-shared.ts'), 'utf8');
     const projectVersion = shared.match(/PROJECT_VERSION = '([^']+)'/)?.[1];

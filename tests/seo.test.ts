@@ -12,6 +12,12 @@ import {
   pageTitle,
 } from '~/lib/seo';
 import { fallbackDetailPaths } from '~/lib/fallback-paths';
+import { locales, defaultLocale } from '~/i18n/routing';
+
+// Non-default locales configured in this fork — empty on en-only forks, so
+// the prefix cases self-skip (see tests/url.test.ts for the full rationale).
+const nonDefaultLocales = locales.filter((l) => l !== defaultLocale);
+const itForEachNonDefault = nonDefaultLocales.length > 0 ? it : it.skip;
 import { site } from '~/config/site';
 import { authors } from '~/config/authors';
 
@@ -110,21 +116,23 @@ describe('SEO helpers', () => {
       expect(json.itemListElement[0].item).toMatch(/\/$/);
     });
 
-    it('emits the localized Home item with a trailing slash for non-default locales', () => {
-      const json = breadcrumbJsonLd({
-        category: 'bosses',
-        categoryLabel: 'ボス一覧',
-        title: 'エンバーファング攻略',
-        slug: 'emberfang',
-        locale: 'ja',
-      });
-      expect(json.itemListElement[0].item).toMatch(/\/ja\/$/);
+    itForEachNonDefault('emits the localized Home item with a trailing slash for non-default locales', () => {
+      for (const locale of nonDefaultLocales) {
+        const json = breadcrumbJsonLd({
+          category: 'bosses',
+          categoryLabel: 'ボス一覧',
+          title: 'エンバーファング攻略',
+          slug: 'emberfang',
+          locale,
+        });
+        expect(json.itemListElement[0].item).toMatch(new RegExp(`/${locale}/$`));
+      }
     });
   });
 
   describe('simpleBreadcrumbJsonLd', () => {
     it('emits the Home item with a trailing slash for every locale', () => {
-      for (const locale of ['en', 'ja'] as const) {
+      for (const locale of locales) {
         const json = simpleBreadcrumbJsonLd({
           pageLabel: 'All Bosses',
           path: '/bosses/',
@@ -182,8 +190,10 @@ describe('SEO helpers', () => {
     });
 
     it('skips the suffix when the title already carries the game name', () => {
-      const t = pageTitle('Anvil Quest Boss Guide');
-      expect(t).toBe('Anvil Quest Boss Guide');
+      // Track THIS fork's game name (apply-template rewrites it) instead of
+      // the upstream demo's.
+      const t = pageTitle(site.game.name + ' Boss Guide');
+      expect(t).toBe(site.game.name + ' Boss Guide');
     });
 
     it('switches to the short suffix for long titles (>50 chars)', () => {

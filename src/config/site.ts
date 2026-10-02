@@ -62,37 +62,29 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'Anvil Quest Wiki',
-  shortName: 'AQ Wiki',
-  description:
-    'Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Every guide carries a last-verified date.',
-  domain: 'anvil.wiki',
-  tagline: 'Your forge for everything Anvil Quest',
-  legalNotice:
-    'Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
-  // 👉 APPLY TEMPLATE: set a real address if you run no social channels —
-  // the contact page renders it as a mailto link.
+  name: 'HowToFish Hub',
+  shortName: 'HowToFish Hub',
+  description: 'Unofficial fan hub for How to Fish: survival guides, weapon & casino strategy, boss breakdowns, the full fishipedia, and a fix-it desk for known bugs.',
+  domain: 'how-to-fish-game.online',
+  tagline: 'The unofficial guide & wiki for How to Fish',
+  legalNotice: 'HowToFish Hub is a fan-made community site. Not affiliated with or endorsed by the How to Fish developer.',
+  // Set a real address if you run no social channels — the contact page
+  // renders it as a mailto link.
   contactEmail: '',
   social: {
-    official: 'https://example.com/anvil-quest',
-    discord: 'https://discord.gg/example',
-    youtube: 'https://youtube.com/@example',
-    twitter: 'https://twitter.com/example',
-    reddit: 'https://reddit.com/r/anvilquest',
+    // No official game page confirmed yet — footer socials render only when
+    // the href is truthy, so an empty string hides the link entirely.
+    official: '',
   },
-  // 👉 APPLY TEMPLATE: point these at the game's real canonical pages.
-  sameAs: [
-    'https://example.com/anvil-quest',
-    'https://en.wikipedia.org/wiki/Anvil_Quest',
-  ],
   game: {
-    name: 'Anvil Quest',
-    platform: 'Roblox',
-    developer: 'Forge Studios',
-    genre: 'Fantasy RPG',
-    releaseDate: '2026-01-15',
+    name: 'How to Fish',
+    platform: 'PC (Steam)',
+    developer: 'Independent developer',
+    genre: 'Co-op fishing survival',
+    releaseDate: '',
   },
-  // hero.webp is 1200×630 (the recommended OG share aspect ratio).
+  // og:image dims of the SHIPPED hero.webp — if you replace public/images/hero.webp,
+  // update these in src/config/site.ts to match (wrong dims mis-crop share cards).
   ogImageWidth: 1200,
   ogImageHeight: 630,
 };

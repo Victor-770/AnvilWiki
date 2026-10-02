@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { videoObjectJsonLd, urlListJsonLd, imageObjectJsonLd } from '~/lib/seo';
 import { slugifyTag, tagPath, tagsPath, recentPath } from '~/lib/url';
+import { locales, defaultLocale } from '~/i18n/routing';
+
+// Non-default locales configured in this fork — empty on en-only forks, so
+// the prefix cases self-skip (see tests/url.test.ts for the full rationale).
+const nonDefaultLocales = locales.filter((l) => l !== defaultLocale);
+const itForEachNonDefault = nonDefaultLocales.length > 0 ? it : it.skip;
 
 describe('slugifyTag', () => {
   it('lowercases and hyphenates whitespace', () => {
@@ -30,10 +36,12 @@ describe('tag/recent URL helpers', () => {
     expect(tagPath('fire-boss', 'en')).toBe('/tags/fire-boss/');
     expect(recentPath('en')).toBe('/recent/');
   });
-  it('prefixes non-default locales', () => {
-    expect(tagsPath('ja')).toBe('/ja/tags/');
-    expect(tagPath('fire-boss', 'ja')).toBe('/ja/tags/fire-boss/');
-    expect(recentPath('ja')).toBe('/ja/recent/');
+  itForEachNonDefault('prefixes non-default locales', () => {
+    for (const loc of nonDefaultLocales) {
+      expect(tagsPath(loc)).toBe(`/${loc}/tags/`);
+      expect(tagPath('fire-boss', loc)).toBe(`/${loc}/tags/fire-boss/`);
+      expect(recentPath(loc)).toBe(`/${loc}/recent/`);
+    }
   });
 });
 

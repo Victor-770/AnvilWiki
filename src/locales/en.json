@@ -1,23 +1,23 @@
 {
   "$schema": "../../docs/home.schema.json",
   "site": {
-    "name": "Anvil Quest Wiki",
-    "shortName": "AQ Wiki",
-    "description": "Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Every guide carries a last-verified date.",
-    "tagline": "Your forge for everything Anvil Quest",
-    "legalNotice": "Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer."
+    "name": "HowToFish Hub",
+    "shortName": "HowToFish Hub",
+    "description": "Unofficial fan hub for How to Fish: survival guides, weapon & casino strategy, boss breakdowns, the full fishipedia, and a fix-it desk for known bugs.",
+    "tagline": "The unofficial guide & wiki for How to Fish",
+    "legalNotice": "HowToFish Hub is a fan-made community site. Not affiliated with or endorsed by the How to Fish developer."
   },
   "nav": {
     "home": "Home",
-    "bosses": "Bosses",
-    "guides": "Guides",
-    "items": "Items",
-    "codes": "Codes",
     "toggleTheme": "Toggle theme",
     "menu": "Menu",
     "close": "Close",
     "search": "Search",
-    "language": "Language"
+    "language": "Language",
+    "guides": "Guides",
+    "bosses": "Bosses",
+    "fish": "Fish",
+    "fixes": "Fixes"
   },
   "search": {
     "placeholder": "Search the wiki...",
@@ -128,286 +128,176 @@
     "paginationAria": "Article pagination"
   },
   "overview": {
-    "bosses": {
-      "overviewTitle": "All Bosses",
-      "overviewDescription": "Complete strategy guides for every boss in Anvil Quest, including attack patterns, weaknesses, and recommended loadouts."
-    },
     "guides": {
       "overviewTitle": "All Guides",
-      "overviewDescription": "In-depth tutorials covering progression, crafting, combat mechanics, and advanced strategies for Anvil Quest."
+      "overviewDescription": "Survival, progression, gear, cooking, casino and achievements — every How to Fish guide in one place, community-tested and checked against the current patch."
     },
-    "items": {
-      "overviewTitle": "All Items",
-      "overviewDescription": "Comprehensive item database with locations, stats, rarity tiers, and crafting recipes."
+    "bosses": {
+      "overviewTitle": "All Bosses",
+      "overviewDescription": "Every How to Fish boss phase by phase — Leech Matriarch, Pufferfish Prime, Reef Tyrant and the Golden Leviathan — with tells, safe windows, dynamite budgets and loot."
     },
-    "codes": {
-      "overviewTitle": "All Codes",
-      "overviewDescription": "Active Anvil Quest codes for free coins, gems, and exclusive items. Verified daily."
+    "fish": {
+      "overviewTitle": "Fishipedia",
+      "overviewDescription": "The full How to Fish species database: every fish by island, the lure pairings that actually get bites, base values and field notes from the community."
+    },
+    "fixes": {
+      "overviewTitle": "Fix-It Desk",
+      "overviewDescription": "Working fixes for the most common How to Fish problems — stutter and GPU load, crashing on launch, save conflicts, doubled audio and co-op lobby issues."
     }
   },
   "home": {
     "meta": {
-      "title": "Anvil Quest Wiki - Complete Boss Guides, Codes & Tier Lists",
-      "description": "The most complete Anvil Quest wiki. Boss strategies, active codes, item locations, tier lists, and beginner guides. Every page shows when it was last verified."
-    },
-    "hero": {
-      "badge": "Fan-Made Community Wiki",
-      "title": "Anvil Quest Wiki",
-      "description": "Your complete guide to Anvil Quest. Boss strategies, active codes, item locations, tier lists, and everything you need to master the forge.",
-      "ctaPrimary": "Play Anvil Quest",
-      "ctaSecondary": "Browse Guides",
-      "videoId": ""
+      "title": "HowToFish Hub — Unofficial Guide & Wiki for How to Fish",
+      "description": "Unofficial fan hub for How to Fish: survival guides, weapon & casino strategy, boss breakdowns, the full fishipedia, and a fix-it desk for known bugs."
     },
     "updates": {
-      "title": "Recent Updates"
+      "badge": "Fresh",
+      "title": "Recently updated"
+    },
+    "popular": {
+      "badge": "Popular",
+      "title": "Most read",
+      "quickLinks": [
+        { "label": "Survival 101", "href": "/guides/survival-101/" },
+        { "label": "Pufferfish Prime", "href": "/bosses/pufferfish-prime/" },
+        { "label": "Fishipedia", "href": "/fish/fishipedia-species-database/" },
+        { "label": "Casino Economics", "href": "/guides/casino-economics/" },
+        { "label": "Fix-It Desk", "href": "/fixes/fix-it-desk/" }
+      ]
+    },
+    "closingCta": {
+      "title": "Ready to lose a friendship over a slot cabinet?",
+      "description": "Bookmark the hub, bring a full pantry, and check back after every patch — the fishipedia and boss guides are re-verified each update.",
+      "primary": "Read Survival 101",
+      "secondary": "Browse all guides"
+    },
+    "hero": {
+      "badge": "Unofficial wiki · Game v1.0.9",
+      "title": "HowToFish Hub",
+      "description": "Survival guides, boss breakdowns, casino math and the full fishipedia for How to Fish — community-tested, with a last-verified date on every page.",
+      "videoId": "",
+      "ctaPrimary": { "label": "Start with Survival 101", "href": "/guides/survival-101/" },
+      "ctaSecondary": { "label": "Browse the fishipedia", "href": "/fish/fishipedia-species-database/" }
     },
     "start": {
-      "badge": "Start Here",
-      "title": "Your Anvil Quest Journey",
+      "badge": "Quick start",
+      "title": "New here? Start with these four",
       "cards": [
         {
           "number": "1",
-          "title": "Beginner Guide",
-          "description": "New to Anvil Quest? Start here with the essential mechanics, controls, and your first hour walkthrough.",
-          "icon": "lucide:book-open",
-          "href": "/guides/beginner-guide"
+          "title": "Survival 101",
+          "description": "Hunger, grilling and night cycles — the habits that keep a crew alive",
+          "icon": "lucide:compass",
+          "href": "/guides/survival-101/"
         },
         {
           "number": "2",
-          "title": "Active Codes",
-          "description": "Redeem the latest codes for free coins, gems, and exclusive cosmetic items.",
-          "icon": "lucide:gift",
-          "href": "/codes"
+          "title": "The four bosses",
+          "description": "Phase-by-phase tells, safe windows and dynamite budgets",
+          "icon": "lucide:swords",
+          "href": "/bosses/"
         },
         {
           "number": "3",
-          "title": "Boss Strategies",
-          "description": "Complete guides for every boss with attack patterns, weaknesses, and recommended loadouts.",
-          "icon": "lucide:swords",
-          "href": "/bosses"
+          "title": "Fishipedia",
+          "description": "All 30 species with the lure pairings that actually get bites",
+          "icon": "lucide:fish",
+          "href": "/fish/fishipedia-species-database/"
         },
         {
           "number": "4",
-          "title": "Weapon Tier List",
-          "description": "Ranking every weapon from S to C based on DPS, utility, and synergy.",
-          "icon": "lucide:list-ordered",
-          "href": "/guides/weapon-tier-list"
-        }
-      ]
-    },
-    "popular": {
-      "badge": "Trending Now",
-      "title": "Most Read This Week",
-      "quickLinks": [
-        {
-          "label": "Emberfang Boss Guide",
-          "href": "/bosses/emberfang"
-        },
-        {
-          "label": "Best Weapons Tier List",
-          "href": "/guides/weapon-tier-list"
-        },
-        {
-          "label": "Beginner Guide",
-          "href": "/guides/beginner-guide"
-        },
-        {
-          "label": "All Active Codes",
-          "href": "/codes"
+          "title": "Fix-It Desk",
+          "description": "Stutter, crashes, save conflicts and co-op lobby fixes",
+          "icon": "lucide:wrench",
+          "href": "/fixes/fix-it-desk/"
         }
       ]
     },
     "explore": {
-      "title": "Explore the Wiki",
-      "description": "Everything you need, organized by category. Pick a topic and dive in.",
+      "title": "Explore the hub",
+      "description": "The short versions, before you dive into the full guides",
       "modules": [
         {
           "order": 1,
-          "name": "Anvil Quest Codes",
-          "description": "Active codes for free coins, gems, and exclusive items. Updated daily.",
-          "href": "/codes",
-          "displayType": "badge-list",
+          "name": "The five-island route",
+          "description": "What to buy and what to beat on every island",
+          "href": "/guides/island-walkthrough/",
+          "displayType": "steps",
           "highlights": [
-            {
-              "label": "HEARTHFIRE-2026",
-              "detail": "+600 Gold · expires Oct 31",
-              "badge": "Active"
-            },
-            {
-              "label": "ASHENKEEP",
-              "detail": "Ashen Keep cosmetic set",
-              "badge": "Active"
-            },
-            {
-              "label": "NEWPLAYER",
-              "detail": "Starter bundle (new accounts)",
-              "badge": "Active"
-            }
+            { "label": "Island 1 · Starter Haven", "detail": "Economy first: bright spinner, second grill slot, then the shotgun" },
+            { "label": "Island 2 · The Swarm", "detail": "Survive three boarding waves, buy the SMG, learn the post-swarm bite shift" },
+            { "label": "Island 3 · Deep Abyss", "detail": "Glow-lure night economy, then Pufferfish Prime with three dynamite" },
+            { "label": "Island 4 · Coral Reaches", "detail": "Golden hook for urchins, steel leader always, engine upgrade" },
+            { "label": "Island 5 · The Golden Isle", "detail": "Mythic lures, charm stack, final payout — and the ending you earned" }
           ]
         },
         {
           "order": 2,
-          "name": "Boss Strategies",
-          "description": "Complete guides for every boss with attack patterns and weaknesses.",
-          "href": "/bosses",
-          "displayType": "labeled-cards",
+          "name": "Patch tracker",
+          "description": "What changed in every How to Fish update",
+          "href": "/guides/patch-notes/",
+          "displayType": "timeline",
           "highlights": [
-            {
-              "label": "Emberfang",
-              "detail": "Frost warden, early-game gatekeeper"
-            },
-            {
-              "label": "Stormcaller",
-              "detail": "Fire titan, mid-game DPS check"
-            },
-            {
-              "label": "Voidking",
-              "detail": "Final boss, requires full prep"
-            }
+            { "badge": "v1.0.9", "label": "Difficulty selection", "detail": "Easy & Hard modes at lobby creation; Hard pays +40% and adds an Island 5 clear achievement" },
+            { "badge": "v1.0.8", "label": "Boss tuning pass", "detail": "Pufferfish Prime's inflation telegraph lengthened by ~0.4s; trophy payouts rebalanced" },
+            { "badge": "v1.0.7", "label": "The harpoon update", "detail": "Harpoon gun added — pins large fish for the reel, one charge per voyage" }
           ]
         },
         {
           "order": 3,
-          "name": "Progression Guides",
-          "description": "Leveling routes, class builds, and endgame preparation.",
-          "href": "/guides",
-          "displayType": "steps",
+          "name": "Casino economics",
+          "description": "The three interactions that actually pay",
+          "href": "/guides/casino-economics/",
+          "displayType": "labeled-cards",
           "highlights": [
-            {
-              "label": "1",
-              "detail": "Pick a starting class"
-            },
-            {
-              "label": "2",
-              "detail": "Clear the tutorial forge"
-            },
-            {
-              "label": "3",
-              "detail": "Unlock the Shattered Isles"
-            },
-            {
-              "label": "4",
-              "detail": "Defeat your first world boss"
-            }
-          ]
-        },
-        {
-          "order": 4,
-          "name": "Weapon Tier List",
-          "description": "Ranking every weapon from S to C based on DPS, utility, and synergy.",
-          "href": "/guides/weapon-tier-list",
-          "displayType": "ranked-grid",
-          "highlights": [
-            {
-              "label": "S",
-              "detail": "Voidforge Blade, Stormcaller"
-            },
-            {
-              "label": "A",
-              "detail": "Emberclaw, Frostpike"
-            },
-            {
-              "label": "B",
-              "detail": "Ironwood Bow, Mace of Dawn"
-            },
-            {
-              "label": "C",
-              "detail": "Starter weapons"
-            }
-          ]
-        },
-        {
-          "order": 5,
-          "name": "Update History",
-          "description": "Major patches and events, newest first.",
-          "href": "/recent",
-          "displayType": "timeline",
-          "highlights": [
-            {
-              "label": "v2.5",
-              "detail": "New raid: Shadowforge released",
-              "badge": "Latest"
-            },
-            {
-              "label": "v2.4",
-              "detail": "Rebalanced all S-tier weapons"
-            },
-            {
-              "label": "v2.3",
-              "detail": "Added 3 new bosses"
-            },
-            {
-              "label": "v2.2",
-              "detail": "Launched season pass system"
-            }
-          ]
-        },
-        {
-          "order": 6,
-          "name": "Video Guides",
-          "description": "Watch the best Anvil Quest walkthroughs and boss fights.",
-          "href": "/guides",
-          "displayType": "video-grid",
-          "highlights": [
-            {
-              "title": "Beginner Walkthrough",
-              "youtubeId": "dQw4w9WgXcQ",
-              "duration": "12:34"
-            },
-            {
-              "title": "All Bosses Ranked",
-              "youtubeId": "aaaaaaaaaaa",
-              "duration": "18:42"
-            },
-            {
-              "title": "Speedrun Guide",
-              "youtubeId": "bbbbbbbbbbb",
-              "duration": "25:10"
-            },
-            {
-              "title": "Hidden Secrets",
-              "youtubeId": "ccccccccccc",
-              "duration": "9:15"
-            }
+            { "label": "Charms", "detail": "+10% payout each and they stack all session — the only guaranteed return in the building" },
+            { "label": "High-roller table", "detail": "30–60% drip premium on rare species and boss trophies, no variance attached" },
+            { "label": "Dockside fish fights", "detail": "Honest odds, small returns — the closest thing the casino has to a savings account" }
           ]
         }
       ]
     },
     "faq": {
-      "title": "Frequently Asked Questions",
-      "description": "Quick answers to the most common questions about Anvil Quest.",
+      "title": "FAQ",
+      "description": "The questions chat answers every single day",
       "items": [
         {
-          "question": "What is Anvil Quest?",
-          "answer": "Anvil Quest is a fantasy RPG on Roblox where you play as a blacksmith apprentice forging weapons and battling bosses across the Shattered Isles. It launched in January 2026 and has over 12 million visits."
+          "question": "Is How to Fish really about fishing?",
+          "answer": "About one third of it. The rod is the opening act; survival management, improvised weapons and a suspiciously lucrative casino carry the rest."
         },
         {
-          "question": "Which class should beginners pick in Anvil Quest?",
-          "answer": "Warrior is the most beginner-friendly class thanks to high HP and simple mechanics. Once you understand the game, Rogue offers the highest damage output for experienced players."
+          "question": "Can I play solo?",
+          "answer": "Yes — the game scales swarm sizes and boss health, but the community consensus is that a 3–4 person crew makes Island 3 dramatically less painful."
         },
         {
-          "question": "How do I redeem codes in Anvil Quest?",
-          "answer": "Open the game, click the settings gear in the top-right, paste your code into the 'Redeem Code' field, and hit confirm. Codes are case-sensitive."
+          "question": "What should I buy first?",
+          "answer": "The bright spinner lure, then the second grill slot, then the shotgun. Lures pay for weapons, never the reverse — the full order is in the Arsenal & Lures guide."
         },
         {
-          "question": "Is Anvil Quest free to play?",
-          "answer": "Yes, Anvil Quest is completely free on Roblox. There are optional cosmetic microtransactions, but they do not affect gameplay balance."
+          "question": "Where is the save file?",
+          "answer": "Under your local app data folder in the game's directory (AppData/LocalLow on Windows). Copy the whole folder somewhere safe before experimenting — the Fix-It Desk has exact steps."
         },
         {
-          "question": "How often does Anvil Quest update?",
-          "answer": "Forge Studios releases major content updates roughly every two weeks, with smaller hotfixes in between. New bosses and codes are typically added with each major patch."
+          "question": "Do fish despawn if I leave them hooked?",
+          "answer": "Hooked fish never despawn, but they tire and escape chance rises after about 90 seconds. Parked schools, however, do rotate — dock parking spots are first-come, first-served."
+        },
+        {
+          "question": "How do I catch the Drippy Urchin?",
+          "answer": "Golden hook, Island 4 reef shelf, and the charm slot empty. It only spawns while you are not actively looking at the water — the community remains furious about this."
+        },
+        {
+          "question": "Is Hard mode worth it?",
+          "answer": "Payouts run about 40% fatter and two achievements live there. Swarm pressure also arrives a day early, so only bring Hard mode once the shotgun purchase is muscle memory."
+        },
+        {
+          "question": "Is this site official?",
+          "answer": "No. HowToFish Hub is a fan-made reference, not affiliated with the developer. It exists because the community kept answering the same six questions in chat every day."
         }
       ]
-    },
-    "closingCta": {
-      "title": "Ready to Master the Forge?",
-      "description": "Bookmark this wiki and check back daily for new codes, boss guides, and tier list updates.",
-      "primary": "Play Anvil Quest",
-      "secondary": "Join Our Discord"
     }
   },
   "footer": {
-    "playGame": "Play Anvil Quest",
+    "playGame": "Play How to Fish",
     "officialDiscord": "Official Discord",
     "officialYoutube": "Official YouTube",
     "officialTwitter": "Official Twitter",
@@ -418,7 +308,7 @@
     "termsOfService": "Terms of Service",
     "copyright": "Copyright",
     "contact": "Contact",
-    "copyrightText": "© 2026 Anvil Quest Wiki. Fan-made, not affiliated with Forge Studios.",
+    "copyrightText": "© 2026 HowToFish Hub. All rights reserved.",
     "community": "Community",
     "legal": "Legal"
   }

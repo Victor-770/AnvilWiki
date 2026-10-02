@@ -1,0 +1,15 @@
+{
+  "name": "HowToFish Hub",
+  "short_name": "HTF Hub",
+  "description": "Unofficial fan hub for the co-op survival game How to Fish: guides, fishipedia, calculator and a fix-it desk.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#082c3b",
+  "background_color": "#05131e",
+  "icons": [
+    { "src": "/favicon-48x48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "/favicon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

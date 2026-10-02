@@ -1,0 +1,115 @@
+---
+title: 'How to Fish Errors & Bug Fixes — The Fix-It Desk'
+description: 'Step-by-step fixes for the most common How to Fish problems: stutter and GPU load, dry bites, audio echo, save backups, error 0x11C7 and co-op lobby issues.'
+category: 'fixes'
+date: 2026-08-29
+lastModified: 2026-10-02
+gameVersion: 'v1.0.9'
+tags: ['troubleshooting', 'crashes', 'saves', 'co-op']
+summary: 'Eight fixes cover most How to Fish problem reports: cap your FPS and use exclusive fullscreen for stutter, swap to a meat chunk lure off the wreck for dry bites, set 48 kHz audio, quit to menu and back up saves before touching cloud conflicts, verify files for error 0x11C7, and re-create the lobby for co-op issues. Run the two-minute routine first.'
+faq:
+  - question: 'Where is the How to Fish save file?'
+    answer: 'Under your local app data folder in the game directory (AppData/LocalLow on Windows). Copy the whole folder somewhere safe before experimenting — and never edit it while the game is open.'
+  - question: 'Is this site official?'
+    answer: 'No. HowToFish Hub is a fan-made reference, not affiliated with the developer. It exists because the community kept answering the same six questions in chat every day.'
+---
+
+import Callout from '~/components/mdx/Callout.astro';
+
+## What should I try before anything else?
+
+Run the boring checklist first — it resolves a surprising share of reports on its own:
+
+1. **Quit to menu** (not Alt+F4) and restart the game — the save-on-quit behavior since 1.0.6 means this is also the safe way to reset a weird session.
+2. **Verify game files** in your launcher's properties → installed files.
+3. **Update your GPU driver** to the current release branch, not the optional beta.
+4. **Unplug or disable secondary audio devices** — half of the audio bugs live here.
+
+Still broken? Work through the eight fixes below top to bottom, and stop when it's fixed. Patch context for several of these is in the [patch notes roundup](/guides/patch-notes/).
+
+## P0 · Stutter & sky-high GPU usage
+
+**Symptoms:** frame spikes in busy waters, GPU pinned near 100% even in calm scenes, occasional half-second freezes when a school spawns.
+
+1. **Cap the frame rate** to your monitor's refresh (or 60) in the game's video settings. Uncapped FPS in a physics-heavy game produces exactly this symptom.
+2. **Switch to exclusive fullscreen.** Windowed and borderless modes add a compositing cost that shows up as stutter on multi-monitor setups.
+3. **Disable the background app overlay** from your GPU vendor's software for this game's executable.
+4. **Check shader cache.** If stutters happen when fish first spawn on-screen, let the game run once through a full day cycle after driver updates — the cache rebuilds itself.
+5. Still stuttering? Set the water quality preset down one notch. It's the single most expensive setting and visually the least missed.
+
+<Callout type="tip" title="Old build tell">
+Since patch 1.0.5 the game reduced idle GPU load on calm scenes. If your GPU sits at 100% *on the title screen*, you're on an old build — update first.
+</Callout>
+
+## P1 · Fish ignore every lure on Island 2
+
+**Symptoms:** bites dry up mid-session, usually after a swarm wave clears; casts land, nothing hits, the crew starts blaming the ocean.
+
+1. **Swap to a meat chunk lure.** Island 2's post-swarm lull switches the active school's preference — bright spinners that worked an hour ago genuinely stop working.
+2. **Move off the wreck.** The swarm spawn zone suppresses bites for a while after the wave. Cast two boat-lengths away from the debris field.
+3. **Check your noise.** Engine idling over the spot scatters schools. Go to neutral, drift in.
+4. **Re-log if nothing bites for 5+ minutes across multiple spots.** A rare session bug (see patch history) can zero the bite table until reload.
+
+## P2 · Sounds play twice / echo
+
+**Symptoms:** engine hum, bite alerts and UI clicks doubled; worse after long sessions or after switching audio devices.
+
+1. **Set your output device to 48 kHz** in Windows sound settings → device properties → advanced. Sample-rate mismatches are the main cause.
+2. **Disable audio "enhancements"** on the same device page. Spatial-audio wrappers frequently double-count game channels.
+3. **Disable then re-enable the device**, then restart the game. The engine caches the device on boot.
+4. On Bluetooth headsets: switch to the **headset (hands-free off)** endpoint, or better, go wired for play sessions.
+
+## P0 · Save file safety & cloud conflicts
+
+**Symptoms:** progress rolled back after a crash, or the launcher offers to "resolve a cloud conflict" and both options look scary. Because they are.
+
+1. **Back up before you touch anything.** Copy the game's save folder out of your local app-data directory (under `AppData/LocalLow/<dev>/How to Fish` on Windows) to somewhere boring, like your desktop.
+2. **Quit to menu, always.** Since 1.0.6 the menu quit forces a save write; Alt+F4 at sea skips it. The game warns you. Believe the warning.
+3. **In a cloud conflict, pick the file with the newer timestamp** — the 1.0.6 dialog shows both. If unsure, cancel, and restore your manual backup locally first, then re-sync.
+4. **After a hard crash**, load the newest save and check your money/achievements immediately before playing on. Report mismatches with both timestamps.
+
+<Callout type="warn" title="Never edit saves live">
+Never edit the save files while the game is open, and never let a "save editor" do it either. The save validates achievements on load; a corrupt flag can silently lock the completion list — which is brutal for the [achievement hunt](/guides/achievement-hunt/).
+</Callout>
+
+## P1 · Crash on launch — error 0x11C7
+
+**Symptoms:** the game dies before the title screen with code 0x11C7, usually after an update or a fresh install.
+
+1. **Verify game files** — the code almost always means a mismatched or missing module.
+2. **Whitelist the game executable** in your firewall/antivirus. Security software that "quarantined one file" is the second most common cause.
+3. **Install the runtime redist packages** from the game's install folder — both the x64 runtime and the media feature ones.
+4. **Check the crash log** in the same app-data folder as your saves; the last line before the dump names the failing module.
+5. On laptops with hybrid graphics: force the game onto the **dedicated GPU** in Windows graphics settings. The integrated-GPU path can fail initialization on some driver versions.
+
+## P1 · Friends cannot see your co-op lobby
+
+**Symptoms:** lobby shows full when it isn't, invites never arrive, or players get kicked when the boat crosses islands.
+
+1. **Host re-creates the lobby.** Lobby state occasionally desyncs after the host alt-tabs during loading; a fresh lobby fixes it more often than restarting the game.
+2. **Everyone restarts their launcher client once.** Not just the game — the overlay service is what carries invites.
+3. **Host picks the region closest to the majority** of the crew, not to themselves. Cross-region lobbies are the main source of mid-voyage kicks.
+4. **Check lobby privacy.** The 8-player patch moved the visibility toggle; a lot of "invisible" lobbies are just set to invite-only.
+5. Still failing? Drop to a smaller crew size. Lobbies at exactly 8/8 are the least stable right now — leaving one slot open is the community workaround.
+
+More co-op role and region advice (the why behind step 3) is in the [crew roles guide](/guides/co-op-crew-roles/).
+
+## P2 · Controller drift & sticky buttons
+
+**Symptoms:** aim wanders on the boat wheel or cast input fires twice.
+
+1. **Turn off launcher input passthrough** for the game, then redo your deadzones from zero.
+2. **Recalibrate the stick** in Windows' controller settings — drift that only shows on the boat wheel is usually a calibration offset, not hardware.
+3. **Test on another game** before blaming the pad. If the drift follows the controller, it's hardware; if it stays with this game, it's the passthrough setting from step 1.
+
+## P1 · Rubber-banding only in co-op
+
+**Symptoms:** crew members teleport and fish "jump" between boats on 8-player nights.
+
+1. **Host switches region to the crew majority** — same rule as the lobby fix above; the host's own region is irrelevant to who rubber-bands.
+2. **Drop to 7 players if it persists.** The desync scales with lobby size, and 7/8 is dramatically more stable than 8/8 right now.
+3. **Have the host (not guests) re-verify files** — a mismatched build between host and client shows up as position glitches on the guests' screens first.
+
+## Nothing worked?
+
+Take your crash log, your build version (bottom of the title screen) and one sentence about when it happens to the game's official Discord or Steam forums. When a fix lands, this page gets it within a patch cycle — and if you find something we don't have listed, it belongs here. For gameplay-side questions that aren't bugs, the [FAQ](/faq/) covers the ones chat answers daily.

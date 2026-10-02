@@ -56,6 +56,7 @@ const LOCALE_ENTRY_SOURCE_RE = /^\/(en|zh)\/?$/;
 const LOCALE_ENTRY_TARGET_RE = /^\/$|^\/zh\/landing\/$/;
 
 function parseRedirects(): Rule[] {
+  if (!existsSync(`${repoRoot}public/_redirects`)) return [];
   const raw = readFileSync(`${repoRoot}public/_redirects`, 'utf8');
   const rules: Rule[] = [];
   for (const line of raw.split('\n')) {
@@ -96,7 +97,10 @@ function slugOf(pathname: string): string {
   return parts[parts.length - 1];
 }
 
-describe('public/_redirects (renamed handbook lesson slugs)', () => {
+// public/_redirects is demo-layer content (upstream handbook redirects +
+// demo locale entry points) — apply-template removes it on forks, so these
+// contracts self-skip there and resume if the file returns.
+describe.skipIf(!existsSync(repoRoot + 'public/_redirects'))('public/_redirects (renamed handbook lesson slugs)', () => {
   const rules = parseRedirects();
   const handbookRules = rules.filter(isHandbookRule);
 
@@ -152,7 +156,7 @@ describe('public/_redirects (renamed handbook lesson slugs)', () => {
   });
 });
 
-describe('public/_redirects (locale entry points)', () => {
+describe.skipIf(!existsSync(repoRoot + 'public/_redirects'))('public/_redirects (locale entry points)', () => {
   const rules = parseRedirects();
   const localeEntryRules = rules.filter((r) => LOCALE_ENTRY_SOURCE_RE.test(r.source));
 
